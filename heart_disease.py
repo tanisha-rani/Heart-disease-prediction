@@ -56,7 +56,8 @@ def user_input():
     return pd.DataFrame([data])
 
 def main():
-    st.title("Heart Disease Prediction App")
+    st.title("❤️ Heart Disease Prediction System")
+    st.write("Developed by Tanisha Rani")
 
     model, preprocessor, err = load_artifacts()
     if err:
@@ -64,8 +65,9 @@ def main():
         return
 
     input_df = user_input()
+    predict = st.button("Predict")
 
-    if st.button("Predict"):
+    if predict:
         processed = preprocessor.transform(input_df)
         pred = model.predict(processed)[0]
         proba = model.predict_proba(processed)[0][1]
